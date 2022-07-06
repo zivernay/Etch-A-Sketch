@@ -1,10 +1,10 @@
 const container = document.querySelector("#container");
-let gridLength = 16;
-
-function generateGrid(gridLength, gridContainer) {
-    for(let i = 0; i < gridLength; i++) {
+let gridColumns = 16;
+const sqrGridSize = Math.pow(gridColumns, 2)
+function generateGrid(gridSize, gridContainer) {
+    for(let i = 0; i < gridSize; i++) {
         const div = document.createElement("div");
         gridContainer.appendChild(div);
     }
 }
-generateGrid(gridLength, container);
+generateGrid(sqrGridSize, container);
