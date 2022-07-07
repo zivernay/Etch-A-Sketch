@@ -57,6 +57,9 @@ table {
 *::after {
     box-sizing: border-box;
 }
+body {
+	display: flex;
+}
 #container {
     display: flex;
     flex-flow: row wrap;
