@@ -1,6 +1,9 @@
 const container = document.querySelector("#container");
 let gridColumns = 16;
 const sqrGridSize = Math.pow(gridColumns, 2)
+generateGrid(sqrGridSize, container); //create div before the beginning of dom manipultions
+const divs = document.querySelectorAll("#container div");
+const color = "#000000"
 
 function generateGrid(gridSize, gridContainer) {
     for(let i = 0; i < gridSize; i++) {
@@ -8,14 +11,17 @@ function generateGrid(gridSize, gridContainer) {
         gridContainer.appendChild(div);
     }
 }
-generateGrid(sqrGridSize, container);
 
-function setDivSize(gridColumns){
+function setElementSize(gridColumns, elements = divs){
     const divSize = 99/gridColumns;
-    const divs = document.querySelectorAll("#container div");
-    for (let div of divs) {
-        div.style.width = `${divSize}%`;
-        div.style.height = `${divSize}vh`
+    for (let element of elements) {
+        element.style.width = `${divSize}%`;
+        element.style.height = `${divSize}vh`
     }
 }
-setDivSize(gridColumns);
+setElementSize(gridColumns);
+
+divs.forEach((div) => div.addEventListener("mouseover", ()=> paintGrid(div, color)))
+function paintGrid(div, color){
+    div.style.backgroundColor = color;
+}
