@@ -37,8 +37,24 @@ function generateGrid(size, container) {
         div.style.height = `${divHeight}%`;
 
         //add paint effect on over
-        div.addEventListener("mouseover", ()=> paintGrid(div, color="#000"));
+        div.addEventListener("mouseover", pen);
         container.appendChild(div);
+    }
+}
+function pen() {
+    const backgroundColor = this.style.backgroundColor;
+    if (backgroundColor == ""){
+        paintGrid(this, color="#000")
+    }
+    else {
+        const string = backgroundColor.match(/\(.*\)/)[0].slice(1, -1);
+        const rgb = string.split(",");
+        const r = rgb[0];
+        const g = rgb[1];
+        const b = rgb[2];
+        //get the value of the color and 
+        const newShade = `rgb(${r*0.85}, ${g*0.85}, ${b*0.85})`;
+        this.style.backgroundColor = newShade;
     }
 }
 
