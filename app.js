@@ -2,7 +2,26 @@ const container = document.querySelector("#container");
 let gridSize = {"rows": 16, "columns": 16};
 generateGrid(gridSize, container); //create div before the beginning of dom manipultions
 const divs = document.querySelectorAll("#container div");
-const color = "#000000"
+const color = "#000000";
+
+function setContainerSize(){
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  if (width > height){
+    container.style.width = `${height}px`;
+    container.style.height = `${height}px`;
+    console.log("width > height")
+  }else if (width < height) {
+    container.style.width = `${width}px`; 
+    container.style.height = `${width}px`; 
+    console.log("width < height")
+  }else {
+    console.log("width = height");
+    container.style.width = `${width}px`; 
+    container.style.height = `${height}px`; 
+  }
+};
+setContainerSize();
 
 function generateGrid(size, container) {
     const area = size.rows * size.columns;
@@ -16,7 +35,7 @@ function generateGrid(size, container) {
 
         //set element size
         div.style.width = `${divWidth}%`;
-        div.style.height = `${divHeight}vh`;
+        div.style.height = `${divHeight}%`;
 
         //add paint effect on over
         div.addEventListener("mouseover", ()=> paintGrid(div, color));

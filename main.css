@@ -59,12 +59,20 @@ table {
 }
 body {
 	display: flex;
+ 	justify-content: center;
+	align-content: center;
 }
 #container {
     display: flex;
     flex-flow: row wrap;
+    flex: 0 0 auto;
 }
 #container div {
-    border: 1px solid gray;
+    border: 1px solid rgba(80,80,80,0.25);
     flex: 1 0 auto;
+}
+#controls {
+    position: absolute;
+	left: 5px;
+	top: 5px;
 }
