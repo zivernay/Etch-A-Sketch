@@ -2,7 +2,6 @@ const container = document.querySelector("#container");
 let gridSize = {"rows": 16, "columns": 16};
 generateGrid(gridSize, container); //create div before the beginning of dom manipultions
 const divs = document.querySelectorAll("#container div");
-const color = "#000000";
 
 function setContainerSize(){
   const width = window.innerWidth;
@@ -38,12 +37,17 @@ function generateGrid(size, container) {
         div.style.height = `${divHeight}%`;
 
         //add paint effect on over
-        div.addEventListener("mouseover", ()=> paintGrid(div, color));
+        div.addEventListener("mouseover", ()=> paintGrid(div, color="#000"));
         container.appendChild(div);
     }
 }
 
 function paintGrid(div, color){
+    if (!(color == "#000000")){
+        const hue = Math.random() * 360;
+        const per = Math.random() *100;
+        color = `hsl(${hue}, ${per}%, 50%)`
+    }
     div.style.backgroundColor = color;
 }
 
